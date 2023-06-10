@@ -10,7 +10,7 @@ Index
 
 
 Hi! This is the source code for a simple shorten urls web service.
-It consists of a Flask application, which uses the 3 following endpoints:
+It consists of a Flask application that uses a sqlite3 database. The service uses the 3 following endpoints:
 
 - POST /shorten
 - GET /&lt;shortcode&gt;
