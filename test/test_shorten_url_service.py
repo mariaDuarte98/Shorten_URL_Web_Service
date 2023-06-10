@@ -7,7 +7,6 @@ from decouple import config
 
 class ShortenURLServiceTest(unittest.TestCase):
 
-
     def setUp(self):
         """ Runs before every test """
         self.test_client = app.test_client()
@@ -16,7 +15,6 @@ class ShortenURLServiceTest(unittest.TestCase):
             connection.executescript(f.read())
         connection.commit()
         connection.close()
-
 
     def test_shorten_no_url(self):
         response = self.test_client.post('/shorten')

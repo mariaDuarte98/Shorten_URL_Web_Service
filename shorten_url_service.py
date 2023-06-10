@@ -17,7 +17,7 @@ def get_db_connection():
 def get_shortcodes_in_db(connection):
     rows = connection.execute(
         'Select shortcode from urls_data ').fetchall()
-    shortcodes = [row["shortcode"] for row in rows ] if rows else []
+    shortcodes = [row["shortcode"] for row in rows] if rows else []
     return shortcodes
 
 
@@ -26,13 +26,6 @@ def get_data_of_shortcode(connection, shortcode):
         'Select url, created, lastRedirect, redirectCount'
         ' from urls_data where shortcode = (?)', (shortcode,)).fetchone()
     return data
-
-
-def insert_entry_in_db(connection, shortcode, url):
-    connection.execute(
-        'INSERT INTO urls_data (shortcode, url, created, lastRedirect, redirectCount) VALUES (?,?,?,?,?)',
-        (shortcode, url, dt.datetime.utcnow().isoformat(), None, 0))
-
 
 
 @app.errorhandler(InvalidUsage)

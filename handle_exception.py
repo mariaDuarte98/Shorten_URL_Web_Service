@@ -12,6 +12,3 @@ class InvalidUsage(Exception):
         resp = jsonify({'error_message': self.message, 'status_code': self.status_code})
         resp.status_code = self.status_code
         return resp
-
-
-
