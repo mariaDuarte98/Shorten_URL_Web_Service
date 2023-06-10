@@ -24,7 +24,7 @@ def shorten():
         if not re.match(r"^[A-Za-z0-9_]+$", shortcode) or len(shortcode) != 6:
             raise InvalidUsage("The provided shortcode is invalid", status_code=412)
         elif shortcode in shortcodes_db.keys():
-            raise InvalidUsage("Shortcode already in use", status_code=400)
+            raise InvalidUsage("Shortcode already in use", status_code=409)
 
     else:
         generate = True
