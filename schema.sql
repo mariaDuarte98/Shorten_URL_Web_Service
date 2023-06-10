@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS urls_data;
+
+CREATE TABLE urls_data (
+    shortcode TEXT PRIMARY KEY,
+    url TEXT NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    lastRedirect TIMESTAMP,
+    redirectCount INTEGER NOT NULL DEFAULT 0
+);

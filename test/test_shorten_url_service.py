@@ -1,14 +1,21 @@
 import unittest
 from shorten_url_service import *
 from parameterized import parameterized
-import datetime as dt
+import sqlite3
 
 
 class ShortenURLServiceTest(unittest.TestCase):
 
+
     def setUp(self):
         """ Runs before every test """
         self.test_client = app.test_client()
+        connection = sqlite3.connect('database.db')
+        with open('/Users/mariaduarte/PycharmProjects/Shorten_URL_Web_Service/schema.sql') as f:
+            connection.executescript(f.read())
+        connection.commit()
+        connection.close()
+
 
     def test_shorten_no_url(self):
         response = self.test_client.post('/shorten')
@@ -70,9 +77,9 @@ class ShortenURLServiceTest(unittest.TestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json["shortcode"], "4fEfRt")
-        self.assertEqual(response_2.status_code, 400)
+        self.assertEqual(response_2.status_code, 409)
         self.assertEqual(response_2.json["error_message"], "Shortcode already in use")
-        self.assertEqual(response_2.json["status_code"], 400)
+        self.assertEqual(response_2.json["status_code"], 409)
 
     @parameterized.expand(["_3rTfT", "eWx4_3"])
     def test_get_nonexistent_shortcode(self, shortcode):

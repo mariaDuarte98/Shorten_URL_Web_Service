@@ -41,7 +41,12 @@ To leave the venv type:
 All required packages are in the `requirments.txt` file. To installed them, simply type `pip install -r requirments.txt`
  
 ## Run the application
-Inside the project directory run:
+First you will need to initialize the database. Inside the project directory run:
+```
+ python init_db.py
+```
+
+Then to start the application run:
 ```
  python shorten_url_service.py 
 ```
