@@ -70,9 +70,9 @@ class ShortenURLServiceTest(unittest.TestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json["shortcode"], "4fEfRt")
-        self.assertEqual(response_2.status_code, 400)
+        self.assertEqual(response_2.status_code, 409)
         self.assertEqual(response_2.json["error_message"], "Shortcode already in use")
-        self.assertEqual(response_2.json["status_code"], 400)
+        self.assertEqual(response_2.json["status_code"], 409)
 
     @parameterized.expand(["_3rTfT", "eWx4_3"])
     def test_get_nonexistent_shortcode(self, shortcode):
