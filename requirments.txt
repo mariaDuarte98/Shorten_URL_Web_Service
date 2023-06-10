@@ -5,3 +5,4 @@ exrex
 re
 parameterized
 coverage
+python-decouple

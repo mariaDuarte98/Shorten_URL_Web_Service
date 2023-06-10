@@ -2,6 +2,7 @@ import unittest
 from shorten_url_service import *
 from parameterized import parameterized
 import sqlite3
+from decouple import config
 
 
 class ShortenURLServiceTest(unittest.TestCase):
@@ -11,7 +12,7 @@ class ShortenURLServiceTest(unittest.TestCase):
         """ Runs before every test """
         self.test_client = app.test_client()
         connection = sqlite3.connect('database.db')
-        with open('/Users/mariaduarte/PycharmProjects/Shorten_URL_Web_Service/schema.sql') as f:
+        with open(config("SCHEMA_PATH")) as f:
             connection.executescript(f.read())
         connection.commit()
         connection.close()
