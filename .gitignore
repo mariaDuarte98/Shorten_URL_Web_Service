@@ -1,1 +1,7 @@
 venv
+.env
+__pycache__
+test/__pychache__
+.coverage
+htmlcov
+.idea
