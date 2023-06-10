@@ -39,7 +39,7 @@ To leave the venv type:
 ## Requirements
 
 All required packages are in the `requirments.txt` file. To installed them, simply type `pip install -r requirments.txt`
-You will also need to add an .env file with the variable SCHEMA_PATH defined as your full path to the schema.sql file.
+You will also need to add an .env file with the variable `SCHEMA_PATH` defined as your full path to the `schema.sql` file.
  
 ## Run the application
 First you will need to initialize the database. Inside the project directory run:
